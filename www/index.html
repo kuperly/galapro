@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+  <title></title>
+
+  <link rel="manifest" href="manifest.json">
+  <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+
+  <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
+
+  <!-- ionic/angularjs js -->
+  <script src="lib/ionic/js/ionic.bundle.js"></script>
+
+  <!-- cordova script (this will be a 404 during development) -->
+  <script src="cordova.js"></script>
+
+  <!-- <script src="lib/socket.io-client/socket.io.js"></script> -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/socket.io-client@2.1.1/lib/index.js"></script> -->
+  <script src="lib/angular-socket-io/socket.min.js"></script>
+  <script src="http://localhost:3000/socket.io/socket.io.js"></script>
+
+
+
+
+  <!-- app's js -->
+  <script src="js/app.js"></script>
+  <script src="js/main.controller.js"></script>
+  <script src="js/main.factory.js"></script>
+</head>
+
+<body ng-app="starter" ng-controller="main as vm">
+
+  <ion-pane>
+    <ion-header-bar class="bar-stable">
+      <h1 class="title">Ionic Blank Starter</h1>
+    </ion-header-bar>
+    <ion-content>
+
+      <div>
+        <form name="myForm" ng-submit="vm.submit(myForm);" novalidate>
+          <div class="list">
+            <label class="item item-input">
+              <input type="url" name="url" ng-model="vm.form.url" placeholder="Website" ng-required="vm.form.redirect"> 
+            </label>
+            <p class="error-msg" ng-if="myForm.$submitted && myForm.url.$error.url">
+                Sorry Not a Valid URL, Don't Forget to Use http://
+            </p>
+            <p class="error-msg" ng-if="myForm.$submitted && myForm.url.$error.required">
+                URL is required when 'redirect' is selected
+            </p>
+            <p class="error-msg" ng-if="vm.message">{{vm.message}}</p>
+            <ion-checkbox name="redirect" ng-model="vm.form.redirect">Redirect</ion-checkbox>
+            <p class="error-msg" ng-if="vm.redirectMsg"> {{vm.redirectMsg}} </p>
+            
+            <button type="submit" class="button button-block button-balanced">
+              Submit
+            </button>
+          </div>
+        </form>
+      </div>
+
+    </ion-content>
+  </ion-pane>
+</body>
+
+</html>
